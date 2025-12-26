@@ -8,6 +8,8 @@ set(TARGET_NAME Lust)
 file(GLOB_RECURSE SAND_COFFIN_HDRS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "src/*.hpp")
 file(GLOB_RECURSE SAND_COFFIN_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "src/*.cpp")
 
+append_rpath()
+
 add_library(${TARGET_NAME} ${SAND_COFFIN_SRCS} ${SAND_COFFIN_HDRS})
 target_include_directories(${TARGET_NAME} PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/Core>
@@ -41,15 +43,7 @@ target_installation_behaviour(
 	PROJECT_NAME ${PROJECT_NAME}
 	NAMESPACE "Lust"
 	COMPONENT Lust
-	HEADER_INPUT ${CMAKE_CURRENT_SOURCE_DIR}/src/Core/ 
-				 ${CMAKE_CURRENT_SOURCE_DIR}/src/Events/
-				 ${CMAKE_CURRENT_SOURCE_DIR}/src/Window/
-				 ${CMAKE_CURRENT_SOURCE_DIR}/src/MathOperations/
-				 ${CMAKE_CURRENT_SOURCE_DIR}/src/third_party/imgui/public
-	HEADER_OUTPUT ./include/Lust/Core
-				  ./include/Lust/Events
-				  ./include/Lust/Window
-				  ./include/Lust/MathOperations
-				  ./include/Lust/third_party/imgui/public)
+	HEADER_INPUT ${CMAKE_CURRENT_SOURCE_DIR}/src/Core
+	HEADER_OUTPUT include/Lust/Core)
 
 # TODO: Adicione testes e instale destinos, se necessário.

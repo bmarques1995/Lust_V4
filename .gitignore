@@ -24,3 +24,6 @@ final_coverage/
 __pycache__/
 .win_venv/
 .unix_venv/
+
+compile_commands.json
+.cache/
