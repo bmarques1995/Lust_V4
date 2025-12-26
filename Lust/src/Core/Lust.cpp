@@ -2,11 +2,9 @@
 //
 
 #include "Lust.hpp"
+#include <iostream>
 
-using namespace std;
-
-int main()
+void Lust::Lust::Hello()
 {
-	cout << "Hello CMake." << endl;
-	return 0;
+	std::cout << "Hello CMake." << std::endl;
 }
