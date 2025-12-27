@@ -4,7 +4,7 @@
             "type": "lldb-dap",
             "request": "launch",
             "name": "SandCoffin",
-            "program": "${workspaceFolder}/Linux/Debug/bin/SandCoffin",
+            "program": "${workspaceFolder}/out/build/linux-debug/SandCoffin/SandCoffin",
             "cwd": "${workspaceFolder}"
         }
     ],
