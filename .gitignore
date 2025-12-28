@@ -27,3 +27,5 @@ __pycache__/
 
 compile_commands.json
 .cache/
+client.log
+core.log

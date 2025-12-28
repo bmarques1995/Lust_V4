@@ -5,18 +5,21 @@
 # Adicione a origem ao executável deste projeto.
 set(TARGET_NAME Lust)
 
-file(GLOB_RECURSE SAND_COFFIN_HDRS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "src/*.hpp")
-file(GLOB_RECURSE SAND_COFFIN_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "src/*.cpp")
+file(GLOB_RECURSE LUST_HDRS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "src/*.hpp")
+file(GLOB_RECURSE LUST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "src/*.cpp")
 
-append_rpath()
-
-add_library(${TARGET_NAME} ${SAND_COFFIN_SRCS} ${SAND_COFFIN_HDRS})
+add_library(${TARGET_NAME} ${LUST_SRCS} ${LUST_HDRS})
 target_include_directories(${TARGET_NAME} PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/Core>
 	$<INSTALL_INTERFACE:include>
 	PRIVATE
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/pch>
 )
+
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+	target_compile_definitions(${TARGET_NAME} PUBLIC LUST_DEBUG_MODE)
+	target_link_libraries(${TARGET_NAME} PUBLIC LustDevUtils)
+endif()
 
 if(BUILD_SHARED_LIBS)
 	if(WIN32)

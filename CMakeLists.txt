@@ -12,6 +12,7 @@ endif()
 project(Lust LANGUAGES CXX VERSION 0.0.4)
 
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
+option(FETCHERS_LOCATION "Set Repo and File Fetcher location" ".")
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake_helpers;${PROJECT_SOURCE_DIR}/cmake_extra")
 
@@ -19,6 +20,9 @@ include(dep_tracer)
 include(target_destination)
 include(source_downloader)
 
+append_rpath()
+
 # Inclua subprojetos.
+add_subdirectory("DevUtils")
 add_subdirectory("Lust")
 add_subdirectory("SandCoffin")
