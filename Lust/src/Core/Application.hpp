@@ -7,10 +7,12 @@
 
 namespace Lust
 {
-	class LUST_API Lust
+	class LUST_API Application
 	{
 	public:
-		static void Hello();
+		Application();
+		virtual ~Application();
+		void Run();
 	};
 }
 

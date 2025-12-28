@@ -1,7 +1,21 @@
-#include "Lust.hpp"
+#include "Application.hpp"
 
-int main(int argc, char* argv[])
+class SandCoffin : public Lust::Application
 {
-	Lust::Lust::Hello();
+public:
+	SandCoffin() : Lust::Application() {}
+	~SandCoffin() {}
+};
+
+Lust::Application* CreateApplication()
+{
+	return new SandCoffin();
+}
+
+int main(int argc, char* argv[]) {
+	Lust::Application* app = CreateApplication();
+	app->Run();
+	delete app;
 	return 0;
 }
+
