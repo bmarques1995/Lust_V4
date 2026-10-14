@@ -15,6 +15,9 @@ add_executable(${TARGET_NAME} ${SAND_COFFIN_SRCS} ${SAND_COFFIN_HDRS})
 target_link_libraries(${TARGET_NAME} PRIVATE Lust)
 
 set_cxx_project_standards(${TARGET_NAME} 20 FALSE)
+set_artifacts_dir(${TARGET_NAME} ${PROJECT_BINARY_DIR})
+set_msvc_target_utf8(${TARGET_NAME})
+set_msvc_debug_improvements(${TARGET_NAME})
 target_installation_behaviour(
 	CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/cmake/config.cmake.in
 	TARGET_NAME ${TARGET_NAME}

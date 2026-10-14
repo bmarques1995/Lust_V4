@@ -8,7 +8,7 @@ set(TARGET_NAME LustDevUtils)
 file(GLOB_RECURSE DEVUTILS_HDRS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "src/*.hpp")
 file(GLOB_RECURSE DEVUTILS_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "src/*.cpp")
 
-trace_dependency(NAME spdlog INSTALL_SCRIPT "${PROJECT_SOURCE_DIR}/installers/spdlog.cmake.json" WORKING_DIR "${FETCHERS_LOCATION}")
+find_package(spdlog REQUIRED)
 
 add_library(${TARGET_NAME} ${DEVUTILS_SRCS} ${DEVUTILS_HDRS})
 target_link_libraries(${TARGET_NAME} PUBLIC spdlog::spdlog)
@@ -41,6 +41,10 @@ endif()
 
 
 set_cxx_project_standards(${TARGET_NAME} 20 FALSE)
+message(STATUS "Artifacts directory for ${TARGET_NAME}: ${PROJECT_BINARY_DIR}")
+set_artifacts_dir(${TARGET_NAME} ${PROJECT_BINARY_DIR})
+set_msvc_target_utf8(${TARGET_NAME})
+set_msvc_debug_improvements(${TARGET_NAME})
 target_installation_behaviour(
 	CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/cmake/config.cmake.in
 	TARGET_NAME ${TARGET_NAME}
